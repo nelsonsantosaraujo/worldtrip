@@ -1,23 +1,13 @@
 import { Box, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { Card } from "../components/Card";
 import { Carousel } from "../components/Carousel";
+import { Header } from "../components/Header";
 
 
 export default function Home() {
   return (
     <>
-      <Box w="100%">
-        <Flex 
-          w="100%" 
-          maxWidth={1160} 
-          align="center" 
-          justify="center" 
-          py="7" 
-          mx="auto"
-        >
-          <Image src="/assets/logo.svg" alt="WorldTrip" />
-        </Flex>
-      </Box>
+      <Header />
       <Box 
         h={{base: 163, md: 335}} 
         w="100%" 
