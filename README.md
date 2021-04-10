@@ -1,34 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <img alt="Logo" src="./public/assets/logo.svg" alt="WorldTrip">
+</h1>
 
-## Getting Started
+<h1 align="center">
+    WorldTrip
+</h1>
 
-First, run the development server:
+<p align="center">
+ <a href="#sobre-o-projeto">Sobre o Projeto</a> •
+ <a href="#tecnologias">Tecnologias</a> •
+ <a href="#configurações-necessárias">Configurações necessárias</a> •
+ <a href="#licença">Licença</a> •
+ <a href="#autor">Autor</a>
+</p>
+
+## Sobre o projeto
+
+O projeto tem como objetivo o estudo e desenvolvimento de uma aplicação em ReactJS com NextJS utilizando a biblioteca de componentes Chakra-ui e Swiper para desenvolvimento do carousel.
+
+O projeto foi desenvolvido como desafio complementar das aulas do modulo 04 do [Ignite da Rocketseat](https://rocketseat.com.br/)
+
+Link do [desafio](https://www.notion.so/Desafio-01-Interface-com-Chakra-UI-d1274f7fd7f54283b9173b7fd8003cc6)
+
+---
+
+## Tecnologias
+
+Abaixo as tecnologias utilizadas para construção da aplicação
+
+- [ReactJS](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+- [Chakra-ui](https://chakra-ui.com/)
+- [Swiperjs](https://swiperjs.com/)
+- [Axios](https://github.com/axios/axios)
+- [Json-server](https://github.com/typicode/json-server)
+
+---
+
+## Configurações necessárias
+
+### **Requisitos**
+
+Necessário realizar as instalações:
+
+- [Git](https://git-scm.com/)
+- [Yarn](https://classic.yarnpkg.com)
+
+### **Clone do projeto**
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Execute o comando git clone para realizar o clone do repositório
+$ git clone https://github.com/nelsonsantosaraujo/worldtrip.git
+# Entre na pasta do repositório clonado
+$ cd worldtrip
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Iniciando o projeto**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+# Execute yarn para instalar as dependências
+$ yarn
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Execute o comando para iniciar a Fake API
+$ yarn json-server --watch server.json --port 3333
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Para iniciar a aplicação
+$ yarn dev
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais informações.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Autor
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feito por Nelson Araújo 👋🏽 Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Nelson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/nelsonsantosaraujo/)
+[![Gmail Badge](https://img.shields.io/badge/-nelsonsantosaraujo@hotmail.com-red?style=flat-square&link=mailto:nelsonsantosaraujo@hotmail.com)](mailto:nelsonsantosaraujo@hotmail.com)
