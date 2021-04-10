@@ -4,7 +4,18 @@ import { CarouselItem } from './CarouselItem';
 
 SwiperCore.use([Navigation, Pagination]);
 
-export function Carousel() {
+interface ContinentsData {
+  id: number;
+  name: string;
+  description: string;
+  carrouselImage: string;
+}
+
+interface CarouselProps {
+  data: ContinentsData[];
+}
+
+export function Carousel({data}: CarouselProps) {
   return (
     <>
       <Swiper
@@ -16,15 +27,16 @@ export function Carousel() {
         loop
         autoplay
       >
-        <SwiperSlide key="1">
-          <CarouselItem />
-        </SwiperSlide>
-        <SwiperSlide key="2">
-          <CarouselItem />
-        </SwiperSlide>
-        <SwiperSlide key="3">
-          <CarouselItem />
-        </SwiperSlide>
+        {data && data.map(continent => (
+          <SwiperSlide key={continent.id}>
+            <CarouselItem 
+              slug={continent.id}
+              name={continent.name} 
+              description={continent.description} 
+              image={continent.carrouselImage} 
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

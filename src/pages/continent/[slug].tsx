@@ -1,17 +1,43 @@
 import { Box, Flex, Heading, Icon, Image, SimpleGrid, Stack, Text, Tooltip } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
 import { FiInfo } from 'react-icons/fi';
+import { GetStaticPaths, GetStaticProps } from "next";
+import api from "../../services/api";
 
-export default function Continent() {
+interface CountriesData {
+  id: number;
+  name: string;
+  flag: string;
+  capital: string;
+  image: string;
+}
+
+interface ContinentData {
+  name: string;
+  text: string;
+  numberOfCountries: number;
+  numberOfLanguages: number;
+  numberOfCity: number;
+  bannerImage: string;
+  countries: CountriesData[];
+}
+
+interface ContinentProps {
+  continent: ContinentData;
+}
+
+export default function Continent({continent}: ContinentProps) {
+
   return (
     <>
       <Header hasBack />
       <Box
         h={{base: 150, md: 500}} 
         w="100%" 
-        backgroundImage="url('/assets/background.jpg')" 
+        backgroundImage={`url(${continent.bannerImage})`} 
         backgroundRepeat="no-repeat" 
-        backgroundSize="cover" 
+        backgroundSize="cover"
+        backgroundPosition="center"
       >
         <Flex 
           w="100%" 
@@ -28,18 +54,18 @@ export default function Continent() {
             fontWeight="semibold" 
             color="gray.50"
           >
-            Europa
+            {continent.name}
           </Heading>
         </Flex>
       </Box>
       <Flex w="100%" maxWidth={1160} mx="auto" mt={{base: '6', xl:'20'}} align="center" justify="space-between" wrap="wrap" px={{base: '4', xl: '0'}}>
         <Text fontSize={{base: 'sm', xl: '2xl'}} w="100%" maxWidth={{base: 'unset', lg: 600}} textAlign="justify">
-          A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+          {continent.text}
         </Text>
         <Stack direction="row" spacing={['3', '8','10']} align="center" justify="space-between" mt={{base: '4', xl: '0'}}>
           <Box textAlign={{base: 'left', xl: 'center'}}>
             <Heading fontSize={{base: '2xl', xl: '5xl'}} fontWeight="semibold" color="orange.300">
-              50
+              {continent.numberOfCountries}
             </Heading>
             <Text fontSize={{base: 'lg', xl: '2xl'}} fontWeight="semibold" color="gray.900">
               países
@@ -47,7 +73,7 @@ export default function Continent() {
           </Box>
           <Box textAlign={{base: 'left', xl: 'center'}}>
             <Heading fontSize={{base: '2xl', xl: '5xl'}} fontWeight="semibold" color="orange.300">
-              60
+              {continent.numberOfLanguages}
             </Heading>
             <Text fontSize={{base: 'lg', xl: '2xl'}} fontWeight="semibold" color="gray.900">
               línguas
@@ -55,7 +81,7 @@ export default function Continent() {
           </Box>
           <Box textAlign={{base: 'left', xl: 'center'}}>
           <Heading fontSize={{base: '2xl', xl: '5xl'}} fontWeight="semibold" color="orange.300">
-              27
+              {continent.numberOfCity}
             </Heading>
             <Flex align="center" justify="center">
               <Text fontSize={{base: 'lg', xl: '2xl'}} fontWeight="semibold" color="gray.900">
@@ -85,78 +111,74 @@ export default function Continent() {
           spacing="10"
           minChildWidth="260px"
         >
-          <Box w="fit-content" bg="white" borderRadius="4" borderWidth="1px" borderColor="rgba(255,186,8,0.5)">
-            <Image w="256px" h="173px" src="https://via.placeholder.com/256x173" borderTopRadius="4" />
-            <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
-              <Stack spacing="3">
-                <Text fontSize="xl" fontFamily="Barlow" fontWeight="semibold" color="gray.900" >
-                  Londres
-                </Text>
-                <Text fontSize="md" fontFamily="Barlow" fontWeight="medium" color="gray.800" >
-                  Reino Unido
-                </Text>
-              </Stack>
-              <Image h="30px" w="30px" src="https://via.placeholder.com/30x30?text=1" borderRadius="50%" />
-            </Flex>
-          </Box>
-          <Box w="fit-content" bg="white" borderRadius="4" borderWidth="1px" borderColor="rgba(255,186,8,0.5)">
-            <Image w="256px" h="173px" src="https://via.placeholder.com/256x173" borderTopRadius="4" />
-            <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
-              <Stack spacing="3">
-                <Text fontSize="xl" fontFamily="Barlow" fontWeight="semibold" color="gray.900" >
-                  Londres
-                </Text>
-                <Text fontSize="md" fontFamily="Barlow" fontWeight="medium" color="gray.800" >
-                  Reino Unido
-                </Text>
-              </Stack>
-              <Image h="30px" w="30px" src="https://via.placeholder.com/30x30?text=1" borderRadius="50%" />
-            </Flex>
-          </Box>
-          <Box w="fit-content" bg="white" borderRadius="4" borderWidth="1px" borderColor="rgba(255,186,8,0.5)">
-            <Image w="256px" h="173px" src="https://via.placeholder.com/256x173" borderTopRadius="4" />
-            <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
-              <Stack spacing="3">
-                <Text fontSize="xl" fontFamily="Barlow" fontWeight="semibold" color="gray.900" >
-                  Londres
-                </Text>
-                <Text fontSize="md" fontFamily="Barlow" fontWeight="medium" color="gray.800" >
-                  Reino Unido
-                </Text>
-              </Stack>
-              <Image h="30px" w="30px" src="https://via.placeholder.com/30x30?text=1" borderRadius="50%" />
-            </Flex>
-          </Box>
-          <Box w="fit-content" bg="white" borderRadius="4" borderWidth="1px" borderColor="rgba(255,186,8,0.5)">
-            <Image w="256px" h="173px" src="https://via.placeholder.com/256x173" borderTopRadius="4" />
-            <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
-              <Stack spacing="3">
-                <Text fontSize="xl" fontFamily="Barlow" fontWeight="semibold" color="gray.900" >
-                  Londres
-                </Text>
-                <Text fontSize="md" fontFamily="Barlow" fontWeight="medium" color="gray.800" >
-                  Reino Unido
-                </Text>
-              </Stack>
-              <Image h="30px" w="30px" src="https://via.placeholder.com/30x30?text=1" borderRadius="50%" />
-            </Flex>
-          </Box>
-          <Box w="fit-content" bg="white" borderRadius="4" borderWidth="1px" borderColor="rgba(255,186,8,0.5)">
-            <Image w="256px" h="173px" src="https://via.placeholder.com/256x173" borderTopRadius="4" />
-            <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
-              <Stack spacing="3">
-                <Text fontSize="xl" fontFamily="Barlow" fontWeight="semibold" color="gray.900" >
-                  Londres
-                </Text>
-                <Text fontSize="md" fontFamily="Barlow" fontWeight="medium" color="gray.800" >
-                  Reino Unido
-                </Text>
-              </Stack>
-              <Image h="30px" w="30px" src="https://via.placeholder.com/30x30?text=1" borderRadius="50%" />
-            </Flex>
-          </Box>
+          {continent.countries && continent.countries.map(country => (
+            <Box 
+              w="fit-content" 
+              bg="white" 
+              borderRadius="4" 
+              borderWidth="1px" 
+              borderColor="rgba(255,186,8,0.5)"
+            >
+              <Image 
+                w="256px" 
+                h="173px"
+                objectFit="cover"
+                objectPosition="center"
+                src={country.image} 
+                borderTopRadius="4" 
+              />
+              <Flex align="center" justify="space-between" mt="5" mb="6" mx="6">
+                <Stack spacing="3">
+                  <Text 
+                    fontSize="xl" 
+                    fontFamily="Barlow" 
+                    fontWeight="semibold" 
+                    color="gray.900" 
+                  >
+                    {country.capital}
+                  </Text>
+                  <Text 
+                    fontSize="md" 
+                    fontFamily="Barlow" 
+                    fontWeight="medium" 
+                    color="gray.800" 
+                  >
+                    {country.name}
+                  </Text>
+                </Stack>
+                <Image 
+                  h="30px" 
+                  w="30px" 
+                  src={country.flag} 
+                  borderRadius="50%" 
+                />
+              </Flex>
+            </Box>
+          ))}
         </SimpleGrid>
       </Box>
     </>
   );
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context;
+
+  const response = await api.get(`/continents/${params.slug}`);
+
+  const continent = response.data;
+
+  return {
+    props: {
+      continent,
+    },
+    revalidate: 1,
+  }
 }

@@ -1,10 +1,23 @@
 import { Box, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import { Card } from "../components/Card";
 import { Carousel } from "../components/Carousel";
 import { Header } from "../components/Header";
+import api from "../services/api";
 
+interface ContinentsData {
+  id: number;
+  name: string;
+  description: string;
+  carrouselImage: string;
+}
 
-export default function Home() {
+interface HomeProps {
+  continents: ContinentsData[];
+}
+
+export default function Home({continents}: HomeProps) {
+
   return (
     <>
       <Header />
@@ -71,8 +84,22 @@ export default function Home() {
         Então escolha seu continente
       </Text>
       <Box w="100%" maxWidth={1240} px={{base: 0, xl: '4'}}  mx="auto" mb="10" >
-        <Carousel />
+        <Carousel data={continents} />
       </Box>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  const response = await api.get('/continents');
+
+  const continents = response.data;
+  
+  return {
+    props: {
+      continents
+    }
+  }
+
 }
